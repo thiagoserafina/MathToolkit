@@ -18,6 +18,8 @@ import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 
+//a
+
 public class ProblemasMatematicosWindow extends JFrame {
 
 	private JPanel jPanel1;
