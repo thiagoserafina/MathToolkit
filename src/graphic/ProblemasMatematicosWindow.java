@@ -575,35 +575,6 @@ public class ProblemasMatematicosWindow extends JFrame {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-						// boolean a;
-						// boolean b;
-						// boolean c;
-						// boolean d;
-
-						// if (chkUppercase.isSelected()){
-						// a = true;
-						// } else {
-						// a = false;
-						// }
-
-						// if (chkLowercase.isSelected()){
-						// b = true;
-						// } else {
-						// b = false;
-						// }
-
-						// if (chkNumbers.isSelected()){
-						// c = true;
-						// } else {
-						// c = false;
-						// }
-
-						// if (chkSymbols.isSelected()){
-						// d = true;
-						// } else {
-						// d = false;
-						// }
-
 					String senha = OperacoesMatematicas.GeradorDeSenhas(chkUppercase.isSelected(),
 							chkLowercase.isSelected(), chkNumbers.isSelected(),
 							chkSymbols.isSelected(), (Integer)spnTamanho.getValue());
