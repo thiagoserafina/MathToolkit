@@ -474,38 +474,38 @@ public class ProblemasMatematicosWindow extends JFrame {
 		jPanel8.setBorder(BorderFactory.createTitledBorder(null, "Regra de três"));
 
 			label8_1 = new JLabel("a:");
-			label8_1.setBounds(10, 20, 15, 25);
+			label8_1.setBounds(10, 30, 15, 25);
 			label8_1.setForeground(Color.red);
 			jPanel8.add(label8_1);
 
 			txf8_1 = new JTextField();
-			txf8_1.setBounds(35, 20, 100, 25);
+			txf8_1.setBounds(35, 30, 100, 25);
 			jPanel8.add(txf8_1);
 
 			label8_2 = new JLabel("b:");
-			label8_2.setBounds(10, 50, 15, 25);
+			label8_2.setBounds(10, 60, 15, 25);
 			label8_2.setForeground(Color.blue);
 			jPanel8.add(label8_2);
 
 			txf8_2 = new JTextField();
-			txf8_2.setBounds(35, 50, 100, 25);
+			txf8_2.setBounds(35, 60, 100, 25);
 			jPanel8.add(txf8_2);
 
 			label8_3 = new JLabel("= r1:");
-			label8_3.setBounds(145, 20, 35, 25);
+			label8_3.setBounds(145, 30, 35, 25);
 			label8_3.setForeground(new Color(0, 102, 0));
 			jPanel8.add(label8_3);
 
 			txf8_3 = new JTextField();
-			txf8_3.setBounds(190, 20, 100, 25);
+			txf8_3.setBounds(190, 30, 100, 25);
 			jPanel8.add(txf8_3);
 
 			label8_4 = new JLabel("= r2:");
-			label8_4.setBounds(145, 50, 35, 25);
+			label8_4.setBounds(145, 60, 35, 25);
 			jPanel8.add(label8_4);
 
 			txf8_4 = new JTextField();
-			txf8_4.setBounds(190, 50, 100, 25);
+			txf8_4.setBounds(190, 60, 100, 25);
 			txf8_4.setEditable(false);
 			jPanel8.add(txf8_4);
 
@@ -532,47 +532,47 @@ public class ProblemasMatematicosWindow extends JFrame {
 		jPanel9.setBorder(BorderFactory.createTitledBorder(null, "Gerador de Senha"));
 
 			chkUppercase = new JCheckBox();
-			chkUppercase.setBounds(10, 20, 20, 20);
+			chkUppercase.setBounds(20, 20, 20, 20);
 			jPanel9.add(chkUppercase);
 
 			label9_1 = new JLabel("Maiúsculas");
-			label9_1.setBounds(40, 17, 80, 25);
+			label9_1.setBounds(50, 17, 80, 25);
 			jPanel9.add(label9_1);
 
 			chkLowercase = new JCheckBox();
-			chkLowercase.setBounds(130, 20, 20, 20);
+			chkLowercase.setBounds(140, 20, 20, 20);
 			jPanel9.add(chkLowercase);
 
 			label9_2 = new JLabel("Minúsculas");
-			label9_2.setBounds(160, 17, 80, 25);
+			label9_2.setBounds(170, 17, 80, 25);
 			jPanel9.add(label9_2);
 
 			chkNumbers = new JCheckBox();
-			chkNumbers.setBounds(10, 50, 20, 20);
+			chkNumbers.setBounds(20, 50, 20, 20);
 			jPanel9.add(chkNumbers);
 
 			label9_3 = new JLabel("Números");
-			label9_3.setBounds(40, 47, 80, 25);
+			label9_3.setBounds(50, 47, 80, 25);
 			jPanel9.add(label9_3);
 
 			chkSymbols = new JCheckBox();
-			chkSymbols.setBounds(130, 50, 20, 20);
+			chkSymbols.setBounds(140, 50, 20, 20);
 			jPanel9.add(chkSymbols);
 
 			label9_4 = new JLabel("Símbolos");
-			label9_4.setBounds(160, 47, 80, 25);
+			label9_4.setBounds(170, 47, 80, 25);
 			jPanel9.add(label9_4);
 
 			label9_5 = new JLabel("Tamanho");
-			label9_5.setBounds(10, 75, 80, 25);
+			label9_5.setBounds(50, 75, 80, 25);
 			jPanel9.add(label9_5);
 
 			spnTamanho = new JSpinner();
-			spnTamanho.setBounds(100, 75, 80, 25);
+			spnTamanho.setBounds(140, 75, 80, 25);
 			jPanel9.add(spnTamanho);
 
 			txfSenha = new JTextField();
-			txfSenha.setBounds(10, 110, 180, 25);
+			txfSenha.setBounds(10, 110, 205, 25);
 			txfSenha.setEditable(false);
 			jPanel9.add(txfSenha);
 
@@ -580,14 +580,33 @@ public class ProblemasMatematicosWindow extends JFrame {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					String senha = Operacoes.GeradorDeSenhas(chkUppercase.isSelected(),
-							chkLowercase.isSelected(), chkNumbers.isSelected(),
-							chkSymbols.isSelected(), (Integer)spnTamanho.getValue());
+					if ((Integer)spnTamanho.getValue() <= 0){
+						
+						txfSenha.setForeground(Color.red);
+						txfSenha.setText("Insira o tamanho da senha");
+
+					} else if (chkUppercase.isSelected() == false
+							&& chkLowercase.isSelected() == false
+							&& chkNumbers.isSelected() == false
+							&& chkSymbols.isSelected() == false){
+
+						txfSenha.setForeground(Color.red);
+						txfSenha.setText("Marque pelo menos uma opção");
+
+					} else {
+
+						String senha = Operacoes.GeradorDeSenhas(chkUppercase.isSelected(),
+								chkLowercase.isSelected(), chkNumbers.isSelected(),
+								chkSymbols.isSelected(), (Integer)spnTamanho.getValue());
+					
+					txfSenha.setForeground(Color.black);
 					txfSenha.setText(senha);
+
+					}
 				}
 			});
 
-			btnGerar.setBounds(200, 110, 100, 25);
+			btnGerar.setBounds(225, 110, 75, 25);
 			jPanel9.add(btnGerar);
 
 			getContentPane().add(jPanel9);
