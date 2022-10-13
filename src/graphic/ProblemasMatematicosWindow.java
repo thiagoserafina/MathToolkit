@@ -1,6 +1,6 @@
 package graphic;
 
-import lib.OperacoesMatematicas;
+import lib.Operacoes;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -163,7 +163,7 @@ public class ProblemasMatematicosWindow extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					float res = 0;
 
-					res = OperacoesMatematicas.AplicaDesconto(Float.parseFloat(txf1_1.getText()),
+					res = Operacoes.AplicaDesconto(Float.parseFloat(txf1_1.getText()),
 							Float.parseFloat(txf1_2.getText()));
 					txf1_3.setText("R$ " + Float.toString(res));
 				}
@@ -212,7 +212,7 @@ public class ProblemasMatematicosWindow extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					float res = 0;
 
-					res = OperacoesMatematicas.AplicaAcrecimo(Float.parseFloat(txf2_1.getText()),
+					res = Operacoes.AplicaAcrecimo(Float.parseFloat(txf2_1.getText()),
 							Float.parseFloat(txf2_2.getText()));
 					txf2_3.setText("R$ " + Float.toString(res));
 				}
@@ -261,7 +261,7 @@ public class ProblemasMatematicosWindow extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					float res = 0;
 
-					res = OperacoesMatematicas.Amostragem(Float.parseFloat(txf3_1.getText()),
+					res = Operacoes.Amostragem(Float.parseFloat(txf3_1.getText()),
 							Float.parseFloat(txf3_2.getText()));
 					txf3_3.setText(Float.toString(res));
 				}
@@ -310,7 +310,7 @@ public class ProblemasMatematicosWindow extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					float res = 0;
 
-					res = OperacoesMatematicas.Amostragem2(Float.parseFloat(txf4_1.getText()),
+					res = Operacoes.Amostragem2(Float.parseFloat(txf4_1.getText()),
 							Float.parseFloat(txf4_2.getText()));
 					txf4_3.setText(Float.toString(res) + "%");
 				}
@@ -359,7 +359,7 @@ public class ProblemasMatematicosWindow extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					float res = 0;
 
-					res = OperacoesMatematicas.DescontoAplicado(Float.parseFloat(txf5_1.getText()),
+					res = Operacoes.DescontoAplicado(Float.parseFloat(txf5_1.getText()),
 							Float.parseFloat(txf5_2.getText()));
 					txf5_3.setText(Float.toString(res) + "%");
 				}
@@ -408,7 +408,7 @@ public class ProblemasMatematicosWindow extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					float res = 0;
 
-					res = OperacoesMatematicas.VariacaoDelta(Float.parseFloat(txf6_1.getText()),
+					res = Operacoes.VariacaoDelta(Float.parseFloat(txf6_1.getText()),
 							Float.parseFloat(txf6_2.getText()));
 					txf6_3.setText(Float.toString(res) + "%");
 				}
@@ -457,9 +457,9 @@ public class ProblemasMatematicosWindow extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					float res = 0;
 
-					res = OperacoesMatematicas.ValorOriginal(Float.parseFloat(txf7_1.getText()),
+					res = Operacoes.ValorOriginal(Float.parseFloat(txf7_1.getText()),
 							Float.parseFloat(txf7_2.getText()));
-					txf7_3.setText(Float.toString(res));
+					txf7_3.setText("R$ "+ Float.toString(res));
 				}
 			});
 
@@ -515,7 +515,7 @@ public class ProblemasMatematicosWindow extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					float res = 0;
 
-					res = OperacoesMatematicas.RegraDeTres(Float.parseFloat(txf8_1.getText()),
+					res = Operacoes.RegraDeTres(Float.parseFloat(txf8_1.getText()),
 							Float.parseFloat(txf8_2.getText()), Float.parseFloat(txf8_3.getText()));
 					txf8_4.setText(Float.toString(res));
 				}
@@ -528,7 +528,7 @@ public class ProblemasMatematicosWindow extends JFrame {
 
 		jPanel9 = new JPanel();
 		jPanel9.setLayout(null);
-		jPanel9.setBounds(330, 330, 310, 200);
+		jPanel9.setBounds(330, 330, 310, 150);
 		jPanel9.setBorder(BorderFactory.createTitledBorder(null, "Gerador de Senha"));
 
 			chkUppercase = new JCheckBox();
@@ -571,18 +571,23 @@ public class ProblemasMatematicosWindow extends JFrame {
 			spnTamanho.setBounds(100, 75, 80, 25);
 			jPanel9.add(spnTamanho);
 
+			txfSenha = new JTextField();
+			txfSenha.setBounds(10, 110, 180, 25);
+			txfSenha.setEditable(false);
+			jPanel9.add(txfSenha);
+
 			btnGerar = new JButton(new AbstractAction("Gerar") {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					String senha = OperacoesMatematicas.GeradorDeSenhas(chkUppercase.isSelected(),
+					String senha = Operacoes.GeradorDeSenhas(chkUppercase.isSelected(),
 							chkLowercase.isSelected(), chkNumbers.isSelected(),
 							chkSymbols.isSelected(), (Integer)spnTamanho.getValue());
 					txfSenha.setText(senha);
 				}
 			});
 
-			btnGerar.setBounds(105, 110, 100, 25);
+			btnGerar.setBounds(200, 110, 100, 25);
 			jPanel9.add(btnGerar);
 
 			getContentPane().add(jPanel9);
