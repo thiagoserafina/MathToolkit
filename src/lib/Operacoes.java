@@ -40,13 +40,9 @@ public class Operacoes {
 	public static String GeradorDeSenhas(boolean usaUpperCase, boolean usaLowerCase, boolean usaNumbers,
 			boolean usaSymbols, int tam) {
 
-		if (tam <= 0) {
-			return "";
-		}
-
 		String upperCase = "ABCDEFGHIJKLMNOPQRSTUVXYZ";
 		String lowerCase = "abcdefghijklmnopqrstuvxyz";
-		String symbols = "£$&()*+[]@#^-_!?";
+		String symbols = "@$#!&-+?";
 		String numbers = "0123456789";
 
 		StringBuilder senha = new StringBuilder(tam);
@@ -66,10 +62,10 @@ public class Operacoes {
 			charCategories.add(symbols);
 		}
 
-		for (int i = 0; i < tam; i++){
+		for (int i = 0; i < tam; i++) {
 			String charCategory = charCategories.get(random.nextInt(charCategories.size()));
-			int position = random.nextInt(charCategory.length());
-			senha.append(charCategory.charAt(position));
+			int posicao = random.nextInt(charCategory.length());
+			senha.append(charCategory.charAt(posicao));
 		}
 
 		return new String(senha);
